@@ -455,7 +455,7 @@
         if (numBlank == 0) {
 
             //get "results" element and set innerHTML to show numCorrect and numIncorrect
-            document.getElementById("results").innerHTML = `<h2>Results:</h2><h4 style="color:green">Correct: ${numCorrect}</h4><h4 style="color:red">Incorrect: ${numIncorrect}</h4>`;
+            document.getElementById("results").innerHTML = `<h2>Results:</h2><h4 style="color:green">Correct: ${numCorrect}</h4><h4 style="color:red">Incorrect: ${numIncorrect}</h4><p><button onclick="window.print()">Print (save) page to PDF</button></p>`;
 
             //and also, unhide the answer-ajacent results
             for (i = 0; i < correctAnswers.length; i++) {
