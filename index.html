@@ -3,28 +3,177 @@
 <html>
 
 <head>
+    <style>
+
+        @media only screen {
+            body {
+                font-family: helvetica, sans-serif;
+            }
+            
+            label {
+                max-width: 200px;
+                margin: 0px;
+            }            
+
+            input {
+                width: 10px;
+            }
+
+            h1,
+            h2 {
+            }
+
+            span {
+                width: auto;
+
+
+                display: inline-block;
+                white-space: nowrap;
+            }
+
+            .empty {
+            }
+
+            .divAnswerLabelPair {
+                margin: 3px;
+                white-space: nowrap;
+            }
+
+            .divAnswerColumn {
+                display: inline-grid;
+                
+            }
+
+            #divAnswerColumn1 {
+                margin: auto 20px auto 0px;
+                grid-template-columns: auto auto;
+
+            }
+
+            #divAnswerColumn2 {
+                margin: auto 100px auto 20px;
+                grid-template-columns: auto auto;
+            }
+
+            #waterQuiz {
+                width: "100%";
+                min-width: 900px;
+
+            }
+
+            #waterQuizImage {
+                width: 100%;
+                min-width: 1000px;
+            }
+
+            #level1Div {
+                white-space: nowrap;
+                display: block-grid;
+                grid-template-columns: auto auto;
+                margin: auto;
+                justify-content: center;
+            }
+
+        }
+
+        @media only print {
+
+            body {
+                font-family: helvetica, sans-serif;
+                
+            }
+            
+            label {
+                max-width: 200px;
+            }            
+
+            input {
+                width: 7px;
+            }
+
+            h1,
+            h2 {
+            }
+
+            span {
+            }
+
+            .empty {
+            }
+
+            .divAnswerLabelPair {
+                white-space: nowrap;
+            }
+
+            .divAnswerColumn {
+                display: inline-grid;
+                font-size: 75%;
+
+            }
+
+            #divAnswerColumn1 {
+
+                grid-template-columns: auto auto;
+
+            }
+
+            #divAnswerColumn2 {
+
+                grid-template-columns: auto auto;
+            }
+
+            #waterQuiz {
+
+            }
+
+            
+            #waterQuizImage {
+                width: 100%;
+
+
+
+            }
+
+            #level1Div {
+                white-space: nowrap;
+
+            }
+
+            html {
+                max-width: 800px;
+            }
+
+        }
+    </style>
 
 </head>
 
 <body>
 
-<img src="waterQuizImage.jpg">	
+<img id="waterQuizImage" src="waterQuizImage.jpg">	
 
-<form id="waterQuiz" style="width:100%;display: block;margin: auto">
+<form id="waterQuiz">
 
-    <h1>The Water Cycle</h1>
+    <div id="level1Div">
+        
 
-    <div style="width:98%;display: grid;grid-template-columns: max-content max-content;margin: auto">
+        <div id="divAnswerColumn1" class="divAnswerColumn">
 
-        <h2 style="margin: auto 30px 5px 5px">Pools</h2>
+            <h1>The Water Cycle</h1>
 
-        <h2 style="margin: auto 5px 5px 30px">Fluxes</h2>
+            <h2></h2>
 
-        <div class="divAnswerColumn" style="font-size: x-small;width:100%;display: grid;grid-template-columns: max-content max-content max-content;margin: auto 30px auto 5px">
+
+            <h2>Pools</h2>
+
+            <h2></h2>
+
+
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question1" name="Question1" style="border-style: none none solid " autofocus>
                 <label for="Question1">atmospheric moisture over land</label>
+            
                 <span class="adjacentResult" id="result1"></span>
                 <span class="empty" id="empty1"></span>
             </div>
@@ -134,7 +283,21 @@
 
 
 
-        <div class="divAnswerColumn" style="font-size: x-small;width:100%;display: grid;grid-template-columns: max-content max-content max-content;margin: auto 5px auto 30px">
+        <div id="divAnswerColumn2" class="divAnswerColumn">
+
+
+            <h1></h1>
+
+            <h2></h2>
+
+
+
+            <h2>Fluxes</h2>
+
+            <h2></h2>
+
+
+
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question16" name="Question16" style="border-style: none none solid ">
@@ -268,79 +431,25 @@
 
 
         </div>
-
+        <div style="display: block;margin: 10px">
+            <button type="submit">Submit</button>
+        </div>
     </div>
 
 
 
     
-        <div style="display: block;margin: 10px">
-            <button type="submit">Submit</button>
-        </div>
 
 
-
-</form>
 
 <!-- div for results section -->
-<div id="results" style="display: block;width: 300px;text-align: center;line-height: 1.5;border-style: dotted;margin: 50px auto;visibility: hidden">
+<div id="results" style="display: block;width: 300px;text-align: center;border: 1px;border-style: solid;margin: 50px auto;visibility:hidden">
     <div id="resultsContent" style="display: block;margin: 10%"></div>
 </div>
 
 
-<!-- for testing -->
-    <!-- <p id="dispTest">disptest</p> -->
 
-<!-- Styling the form -->
-<script>
-
-    //Styling all labels:
-        const allLabels = document.getElementsByTagName("label");
-        //This works!:
-            //var allLabels = document.getElementsByTagName("label");
-            //allLabels[0].style.color = 'red';
-
-
-        for (i = 0; i < allLabels.length; i++) {
-            //allLabels[i].style.color = 'red';
-            //allLabels[i].style.width = "150px";
-            allLabels[i].style.width = "fit-content";
-            allLabels[i].style.display = " inline";
-        }
-
-    //Styling all inputs:
-        const allInputs = document.getElementsByTagName("input");
-
-        for (i = 0; i < allInputs.length; i++) {
-            //allInputs[i].style.color = 'red';
-            //allInputs[i].style.width = "150px";
-            allInputs[i].style.width = "35px";
-            allInputs[i].style.display = " inline";
-        }
-
-
-    //Styling all "emptys":
-        const allEmptys = document.getElementsByClassName("empty");
-
-        for (i = 0; i < allEmptys.length; i++) {
-            allEmptys[i].style.width = "fit-content";
-            allEmptys[i].style.margin = "auto auto auto 5px";
-
-        }
-
-
-    //Styling all "answer label pairs":
-        const allAnswerLabelPairs = document.getElementsByClassName("divAnswerLabelPair");
-
-        for (i = 0; i < allAnswerLabelPairs.length; i++) {
-            //allAnswerLabelPairs[i].style.width = "fit-content";
-            allAnswerLabelPairs[i].style.margin = "3px";
-
-        }
-
-
-        
-</script>
+</form>
 
 
 
@@ -390,21 +499,15 @@
         //prevent default action for event
         event.preventDefault();
 
-        //clear existing outputs in case this is not the first click of the button
-        //for (i = 0; i < correctAnswers.length; i++) {
-            //document.getElementById(`result${i+1}`).textContent = '';
-            //document.getElementById(`empty${i+1}`).textContent = '';
-            //document.getElementById(`result${i+1}`).style.visibility = 'hidden';
-        //}
-
         //declare objects to hold info for elements
         const arrayResultElements = document.getElementsByClassName("adjacentResult");
         const arrayEmptyElements = document.getElementsByClassName("empty");
+        const resultsElement = document.getElementById("results");
 
         //clear those two arrays, and hide result elements
         for (i = 0; i < arrayResultElements.length; i++) {
             arrayResultElements[i].textContent ='';
-            arrayResultElements[i].style.visibility ='hidden';
+            //arrayResultElements[i].style.visibility ='hidden';
             arrayEmptyElements[i].textContent ='';
         }
 
@@ -419,20 +522,11 @@
             //create var "answer" and populate with current user answer
             let answer = document.getElementById(`Question${i+1}`).value;
             
-            //hide all "result" spans
-            //var resultElement = document.getElementById(`result${i+1}`);
-                //new iteration using existing array object
-                //let resultElement = arrayResultElements[i+1];
-                 
-            //resultElement.style.visibility = 'hidden';
-                //new iteration: use existing object arrayResultElements
-                //arrayResultElements[`${i+1}`].style.visibility = 'hidden';
-                //resultElement.style.visibility = 'hidden';           
 
             //if "answer" equals nothing, say "answer required" next to answer, and add 1 to "numBlank"
             if (answer === "") {
                 arrayEmptyElements[i].style.color = 'red';
-                arrayEmptyElements[i].textContent = '* Required';
+                arrayEmptyElements[i].textContent = '*';
                 numBlank++;
 
             //else if "answer" equals the correct answer, add 1 to the "numCorrect" counter and set result output to "Correct"
@@ -455,7 +549,18 @@
         if (numBlank == 0) {
 
             //get "results" element and set innerHTML to show numCorrect and numIncorrect
-            document.getElementById("results").innerHTML = `<h2>Results:</h2><h4 style="color:green">Correct: ${numCorrect}</h4><h4 style="color:red">Incorrect: ${numIncorrect}</h4>`;
+    //get "results" element and set innerHTML to show numCorrect and numIncorrect
+    resultsElement.innerHTML = `<p style="margin: 10px;font-size: 200%">Results: </p><div style="margin: 10px auto 10px auto;color:black;display: inline">Correct: </div><div style="color:green;display: inline">${numCorrect}</div><p style="margin: 10px auto 10px auto"><div style="color:black;display: inline">Incorrect: </div><div style="color:red;display: inline">${numIncorrect}</div></p><p><button id="PDFbutton" style="margin: 1px;text-decoration: underline;background-color: Lavender;line-height: 1.5;border-style: none" onclick="window.print()" onmouseenter="funcPDFbuttonMouseEnter()" onmouseleave="funcPDFbuttonMouseLeave()">Print (save) page to PDF</button></p>`;
+
+    function funcPDFbuttonMouseEnter() {
+        let PDFbuttonElement = document.getElementById("PDFbutton");
+        PDFbuttonElement.style.background = "LightBlue";
+    }
+
+    function funcPDFbuttonMouseLeave() {
+        let PDFbuttonElement = document.getElementById("PDFbutton");
+        PDFbuttonElement.style.background = "Lavender";
+    }
 
             //and also, unhide the answer-ajacent results
             for (i = 0; i < correctAnswers.length; i++) {
@@ -471,12 +576,12 @@
             document.getElementById("resultsContent").style.color = 'red';
 
             //set "results" text
-            document.getElementById("resultsContent").innerHTML = `Please provide answers to all questions. There are ${numBlank} unanswered questions remaining.`;
+            document.getElementById("resultsContent").innerHTML = `Please provide answers to all questions. <p>${numBlank} questions remaining.</p>`;
 
         }
 
         //unhide the results container
-        document.getElementById("results").style.visibility = "visible";
+        resultsElement.style.visibility = "visible";
     });
 
 </script>
