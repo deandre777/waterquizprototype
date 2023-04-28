@@ -5,23 +5,42 @@
 <head>
     <style>
 
+        body {
+
+            font-family: Muli, sans-serif;
+
+        }
+
+        .logos {
+            width: 50px;
+            margin: auto 5px auto 5px;
+        }
+
+        footer {
+
+            text-align: center;
+        }
+
+        label {
+            max-width: 200px;
+            margin: 0px;
+        }            
+
+        h1,
+        h2 {
+            font-family: helvetica, sans-serif;
+        }
+
+        .empty {
+        }
+
         @media only screen {
-            body {
-                font-family: helvetica, sans-serif;
-            }
             
-            label {
-                max-width: 200px;
-                margin: 0px;
-            }            
 
             input {
                 width: 10px;
             }
 
-            h1,
-            h2 {
-            }
 
             span {
                 width: auto;
@@ -31,8 +50,6 @@
                 white-space: nowrap;
             }
 
-            .empty {
-            }
 
             .divAnswerLabelPair {
                 margin: 3px;
@@ -74,6 +91,12 @@
                 justify-content: center;
             }
 
+            #dwlogo {
+            }
+
+            #bsflogo {
+            }
+
         }
 
         @media only print {
@@ -83,22 +106,9 @@
                 
             }
             
-            label {
-                max-width: 200px;
-            }            
 
             input {
                 width: 7px;
-            }
-
-            h1,
-            h2 {
-            }
-
-            span {
-            }
-
-            .empty {
             }
 
             .divAnswerLabelPair {
@@ -108,7 +118,6 @@
             .divAnswerColumn {
                 display: inline-grid;
                 font-size: 75%;
-
             }
 
             #divAnswerColumn1 {
@@ -143,7 +152,21 @@
                 max-width: 800px;
             }
 
+            #PDFbutton {
+                visibility: hidden;
+            }
+
+            #resultsContent {
+                height: 120px;
+            }
+
+            #results {
+                height: 122px;
+            }
+
+
         }
+
     </style>
 
 </head>
@@ -437,20 +460,21 @@
     </div>
 
 
-
-    
-
-
-
 <!-- div for results section -->
 <div id="results" style="display: block;width: 300px;text-align: center;border: 1px;border-style: solid;margin: 50px auto;visibility:hidden">
     <div id="resultsContent" style="display: block;margin: 10%"></div>
 </div>
 
-
-
 </form>
 
+<!-- Branding -->
+<footer>
+    <small>
+    <p><span><img id="dwlogo" class="logos" src="dwlogo.png"></span><span><img id="bsflogo" class="logos" src="bsflogo.jpg"></span></p>
+
+    <p>Quiz developed by: USGS</p>
+    </small>
+</footer>
 
 
 <script>
@@ -492,6 +516,17 @@
         'corans'
     ];
 
+    //declare functions for the print to pdf button background color change on hover feature
+    function funcPDFbuttonMouseEnter() {
+        let PDFbuttonElement = document.getElementById("PDFbutton");
+        PDFbuttonElement.style.background = "LightBlue";
+    }
+
+    function funcPDFbuttonMouseLeave() {
+        let PDFbuttonElement = document.getElementById("PDFbutton");
+        PDFbuttonElement.style.background = "Lavender";
+    }
+
 
     //create event handler for "submit" button
     document.getElementById("waterQuiz").addEventListener("submit", function(event) {
@@ -507,7 +542,7 @@
         //clear those two arrays, and hide result elements
         for (i = 0; i < arrayResultElements.length; i++) {
             arrayResultElements[i].textContent ='';
-            //arrayResultElements[i].style.visibility ='hidden';
+            arrayResultElements[i].style.visibility ='hidden';
             arrayEmptyElements[i].textContent ='';
         }
 
@@ -526,7 +561,7 @@
             //if "answer" equals nothing, say "answer required" next to answer, and add 1 to "numBlank"
             if (answer === "") {
                 arrayEmptyElements[i].style.color = 'red';
-                arrayEmptyElements[i].textContent = '*';
+                arrayEmptyElements[i].textContent = '* Required';
                 numBlank++;
 
             //else if "answer" equals the correct answer, add 1 to the "numCorrect" counter and set result output to "Correct"
@@ -548,19 +583,11 @@
         //if the "numBlank" counter equals 0, show results
         if (numBlank == 0) {
 
-            //get "results" element and set innerHTML to show numCorrect and numIncorrect
+
+
     //get "results" element and set innerHTML to show numCorrect and numIncorrect
     resultsElement.innerHTML = `<p style="margin: 10px;font-size: 200%">Results: </p><div style="margin: 10px auto 10px auto;color:black;display: inline">Correct: </div><div style="color:green;display: inline">${numCorrect}</div><p style="margin: 10px auto 10px auto"><div style="color:black;display: inline">Incorrect: </div><div style="color:red;display: inline">${numIncorrect}</div></p><p><button id="PDFbutton" style="margin: 1px;text-decoration: underline;background-color: Lavender;line-height: 1.5;border-style: none" onclick="window.print()" onmouseenter="funcPDFbuttonMouseEnter()" onmouseleave="funcPDFbuttonMouseLeave()">Print (save) page to PDF</button></p>`;
 
-    function funcPDFbuttonMouseEnter() {
-        let PDFbuttonElement = document.getElementById("PDFbutton");
-        PDFbuttonElement.style.background = "LightBlue";
-    }
-
-    function funcPDFbuttonMouseLeave() {
-        let PDFbuttonElement = document.getElementById("PDFbutton");
-        PDFbuttonElement.style.background = "Lavender";
-    }
 
             //and also, unhide the answer-ajacent results
             for (i = 0; i < correctAnswers.length; i++) {
@@ -577,7 +604,6 @@
 
             //set "results" text
             document.getElementById("resultsContent").innerHTML = `Please provide answers to all questions. <p>${numBlank} questions remaining.</p>`;
-
         }
 
         //unhide the results container
