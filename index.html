@@ -6,9 +6,9 @@
     <style>
 
         body {
-
+            font-size: 110%;
             font-family: Muli, sans-serif;
-
+            justify-content: center;
         }
 
         .logos {
@@ -32,15 +32,17 @@
         }
 
         .empty {
+            font-size: 85%;
         }
+
+
+        input {
+            width: 13px;
+        }
+
 
         @media only screen {
             
-
-            input {
-                width: 10px;
-            }
-
 
             span {
                 width: auto;
@@ -52,13 +54,13 @@
 
 
             .divAnswerLabelPair {
-                margin: 3px;
+                margin: 10px 5px 10px 5px;
                 white-space: nowrap;
             }
 
             .divAnswerColumn {
                 display: inline-grid;
-                
+                max-width: 49%;
             }
 
             #divAnswerColumn1 {
@@ -68,24 +70,26 @@
             }
 
             #divAnswerColumn2 {
-                margin: auto 100px auto 20px;
+                margin: auto auto auto 20px;
                 grid-template-columns: auto auto;
             }
 
             #waterQuiz {
-                width: "100%";
-                min-width: 900px;
-
+                width: 100%;
+                margin: auto;
+                display: inline-block;
             }
 
             #waterQuizImage {
                 width: 100%;
-                min-width: 1000px;
+                margin: auto;
+                display: block;
+                justify-content: center;
             }
 
             #level1Div {
                 white-space: nowrap;
-                display: block-grid;
+                display: grid;
                 grid-template-columns: auto auto;
                 margin: auto;
                 justify-content: center;
@@ -106,10 +110,6 @@
                 
             }
             
-
-            input {
-                width: 7px;
-            }
 
             .divAnswerLabelPair {
                 white-space: nowrap;
@@ -195,7 +195,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question1" name="Question1" style="border-style: none none solid " autofocus>
-                <label for="Question1">atmospheric moisture over land</label>
+                <label for="Question1">atmospheric moisture<br>over land</label>
             
                 <span class="adjacentResult" id="result1"></span>
                 <span class="empty" id="empty1"></span>
@@ -203,7 +203,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question2" name="Question2" style="border-style: none none solid ">
-                <label for="Question2">lakes - saline</label>
+                <label for="Question2">lakes -<br>saline</label>
                 <span class="adjacentResult" id="result2"></span>
                 <span class="empty" id="empty2"></span>
             </div>
@@ -217,14 +217,14 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question4" name="Question4" style="border-style: none none solid ">
-                <label for="Question4">atmospheric moisture over ocean</label>
+                <label for="Question4">atmospheric moisture<br>over ocean</label>
                 <span class="adjacentResult" id="result4"></span>
                 <span class="empty" id="empty4"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question5" name="Question5" style="border-style: none none solid ">
-                <label for="Question5">ocean - deep water zone</label>
+                <label for="Question5">ocean - deep<br>water zone</label>
                 <span class="adjacentResult" id="result5"></span>
                 <span class="empty" id="empty5"></span>
             </div>
@@ -245,21 +245,21 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question8" name="Question8" style="border-style: none none solid ">
-                <label for="Question8">ocean - mixed zone</label>
+                <label for="Question8">ocean - mixed<br>zone</label>
                 <span class="adjacentResult" id="result8"></span>
                 <span class="empty" id="empty8"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question9" name="Question9" style="border-style: none none solid ">
-                <label for="Question9">soil moisture</label>
+                <label for="Question9">soil<br>moisture</label>
                 <span class="adjacentResult" id="result9"></span>
                 <span class="empty" id="empty9"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question10" name="Question10" style="border-style: none none solid ">
-                <label for="Question10">ice sheets and glaciers</label>
+                <label for="Question10">ice sheets<br>and glaciers</label>
                 <span class="adjacentResult" id="result10"></span>
                 <span class="empty" id="empty10"></span>
             </div>
@@ -273,14 +273,14 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question12" name="Question12" style="border-style: none none solid ">
-                <label for="Question12">welands - fresh</label>
+                <label for="Question12">welands -<br>fresh</label>
                 <span class="adjacentResult" id="result12"></span>
                 <span class="empty" id="empty12"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question13" name="Question13" style="border-style: none none solid ">
-                <label for="Question13">lakes - fresh</label>
+                <label for="Question13">lakes -<br>fresh</label>
                 <span class="adjacentResult" id="result13"></span>
                 <span class="empty" id="empty13"></span>
             </div>
@@ -295,7 +295,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question15" name="Question15" style="border-style: none none solid ">
-                <label for="Question15">wetlands - brackish</label>
+                <label for="Question15">wetlands -<br>brackish</label>
                 <span class="adjacentResult" id="result15"></span>
                 <span class="empty" id="empty15"></span>
             </div>
@@ -324,42 +324,42 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question16" name="Question16" style="border-style: none none solid ">
-                <label for="Question16">agricultural water use</label>
+                <label for="Question16">agricultural water<br>use</label>
                 <span class="adjacentResult" id="result16"></span>
                 <span class="empty" id="empty16"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question17" name="Question17" style="border-style: none none solid ">
-                <label for="Question17">industrial water use</label>
+                <label for="Question17">industrial water<br>use</label>
                 <span class="adjacentResult" id="result17"></span>
                 <span class="empty" id="empty17"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question18" name="Question18" style="border-style: none none solid ">
-                <label for="Question18">streamflow to closed basins</label>
+                <label for="Question18">streamflow to<br>closed basins</label>
                 <span class="adjacentResult" id="result18"></span>
                 <span class="empty" id="empty18"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question19" name="Question19" style="border-style: none none solid ">
-                <label for="Question19">domestic water use</label>
+                <label for="Question19">domestic water<br>use</label>
                 <span class="adjacentResult" id="result19"></span>
                 <span class="empty" id="empty19"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question20" name="Question20" style="border-style: none none solid ">
-                <label for="Question20">municipal water use</label>
+                <label for="Question20">municipal water<br>use</label>
                 <span class="adjacentResult" id="result20"></span>
                 <span class="empty" id="empty20"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question21" name="Question21" style="border-style: none none solid ">
-                <label for="Question21">streamflow to ocean</label>
+                <label for="Question21">streamflow to<br>ocean</label>
                 <span class="adjacentResult" id="result21"></span>
                 <span class="empty" id="empty21"></span>
             </div>
@@ -373,7 +373,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question23" name="Question23" style="border-style: none none solid ">
-                <label for="Question23">ocean circulation</label>
+                <label for="Question23">ocean<br>circulation</label>
                 <span class="adjacentResult" id="result23"></span>
                 <span class="empty" id="empty23"></span>
             </div>
@@ -387,14 +387,14 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question25" name="Question25" style="border-style: none none solid ">
-                <label for="Question25">grazing water use</label>
+                <label for="Question25">grazing water<br>use</label>
                 <span class="adjacentResult" id="result25"></span>
                 <span class="empty" id="empty25"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question26" name="Question26" style="border-style: none none solid ">
-                <label for="Question26">ocean evaporation</label>
+                <label for="Question26">ocean<br>evaporation</label>
                 <span class="adjacentResult" id="result26"></span>
                 <span class="empty" id="empty26"></span>
             </div>
@@ -408,14 +408,14 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question28" name="Question28" style="border-style: none none solid ">
-                <label for="Question28">groundwater discharge to ocean</label>
+                <label for="Question28">groundwater discharge<br>to ocean</label>
                 <span class="adjacentResult" id="result28"></span>
                 <span class="empty" id="empty28"></span>
             </div>
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question29" name="Question29" style="border-style: none none solid ">
-                <label for="Question29">precipitation over land</label>
+                <label for="Question29">precipitation over<br>land</label>
                 <span class="adjacentResult" id="result29"></span>
                 <span class="empty" id="empty29"></span>
             </div>
@@ -423,7 +423,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question30" name="Question30" style="border-style: none none solid ">
-                <label for="Question30">transport of moisture from ocean to land</label>
+                <label for="Question30">transport of moisture<br>from ocean to land</label>
                 <span class="adjacentResult" id="result30"></span>
                 <span class="empty" id="empty30"></span>
             </div>
@@ -431,7 +431,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question31" name="Question31" style="border-style: none none solid ">
-                <label for="Question31">groundwater recharge</label>
+                <label for="Question31">groundwater<br>recharge</label>
                 <span class="adjacentResult" id="result31"></span>
                 <span class="empty" id="empty31"></span>
             </div>
@@ -439,7 +439,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question32" name="Question32" style="border-style: none none solid ">
-                <label for="Question32">precipitation over ocean</label>
+                <label for="Question32">precipitation over<br>ocean</label>
                 <span class="adjacentResult" id="result32"></span>
                 <span class="empty" id="empty32"></span>
             </div>
@@ -447,7 +447,7 @@
 
             <div class="divAnswerLabelPair">
                 <input type="text" id="Question33" name="Question33" style="border-style: none none solid ">
-                <label for="Question33">urban runoff</label>
+                <label for="Question33">urban<br>runoff</label>
                 <span class="adjacentResult" id="result33"></span>
                 <span class="empty" id="empty33"></span>
             </div>
