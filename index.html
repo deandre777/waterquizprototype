@@ -517,45 +517,46 @@
     ];
 
     //declare functions for the print to pdf button background color change on hover feature
-    function funcPDFbuttonMouseEnter() {
-        let PDFbuttonElement = document.getElementById("PDFbutton");
-        PDFbuttonElement.style.background = "LightBlue";
-    }
+        function funcPDFbuttonMouseEnter() {
+            let PDFbuttonElement = document.getElementById("PDFbutton");
+            PDFbuttonElement.style.background = "LightBlue";
+        }
 
-    function funcPDFbuttonMouseLeave() {
-        let PDFbuttonElement = document.getElementById("PDFbutton");
-        PDFbuttonElement.style.background = "Lavender";
-    }
+        function funcPDFbuttonMouseLeave() {
+            let PDFbuttonElement = document.getElementById("PDFbutton");
+            PDFbuttonElement.style.background = "Lavender";
+        }
 
 
     //create event handler for "submit" button
-    document.getElementById("waterQuiz").addEventListener("submit", function(event) {
+        document.getElementById("waterQuiz").addEventListener("submit", function(event) {
 
         //prevent default action for event
-        event.preventDefault();
+            event.preventDefault();
 
         //declare objects to hold info for elements
-        const arrayResultElements = document.getElementsByClassName("adjacentResult");
-        const arrayEmptyElements = document.getElementsByClassName("empty");
-        const resultsElement = document.getElementById("results");
+            const arrayResultElements = document.getElementsByClassName("adjacentResult");
+            const arrayEmptyElements = document.getElementsByClassName("empty");
+            const resultsElement = document.getElementById("results");
 
         //clear those two arrays, and hide result elements
-        for (i = 0; i < arrayResultElements.length; i++) {
-            arrayResultElements[i].textContent ='';
-            arrayResultElements[i].style.visibility ='hidden';
-            arrayEmptyElements[i].textContent ='';
-        }
+            for (i = 0; i < arrayResultElements.length; i++) {
+                arrayResultElements[i].textContent ='';
+                arrayResultElements[i].style.visibility ='hidden';
+                arrayEmptyElements[i].textContent ='';
+            }
 
         //declare counter variables
-        let numCorrect = 0;
-        let numIncorrect = 0;
-        let numBlank = 0;
+            let numCorrect = 0;
+            let numIncorrect = 0;
+            let numBlank = 0;
 
         //while counter is lower than the number of correct answers, do loop
-        for (i = 0; i < correctAnswers.length; i++) {
+            for (i = 0; i < correctAnswers.length; i++) {
 
             //create var "answer" and populate with current user answer
-            let answer = document.getElementById(`Question${i+1}`).value;
+                let answerRaw = document.getElementById(`Question${i+1}`).value;
+                let answer = answerRaw.trim();
             
 
             //if "answer" equals nothing, say "answer required" next to answer, and add 1 to "numBlank"
