@@ -57,7 +57,7 @@
         }
 
         .chartText {
-            font-size: 85%;
+            font-size: 90%;
             text-align: left;
         }
 
@@ -142,6 +142,11 @@
                 animation-duration: 5s;
             }
 
+            #score {
+                font-size: 150%;
+                margin: 10px auto auto auto;
+            }
+
 
             #dwlogo {
             }
@@ -178,7 +183,7 @@
             }
 
             #waterQuizImage {
-                width: 80%;
+                width: 70%;
                 margin: auto;
                 display: block;
                 justify-content: center;
@@ -239,11 +244,13 @@
             }
 
             #score {
-                font-size: 150%;
+                font-size: 120%;
                 margin: 10px auto auto auto;
             }
 
-
+            #pleaseSave {
+                visibility: hidden;
+            }
 
             .logos {
                 width: 30px;
@@ -692,7 +699,8 @@
                     </div>
                 </div>
                 <p id="score">Score: ${percentCorrect}%</p>
-                <p><button id="PDFbutton" style="margin: 1px;text-decoration: underline;background-color: Lavender;line-height: 1.5;border-style: none" onclick="window.print()" onmouseenter="funcPDFbuttonMouseEnter()" onmouseleave="funcPDFbuttonMouseLeave()">Save results (Print to PDF)</button></p>
+                <p id="pleaseSave">Please save your completed quiz and email the results to contact@blackstarfarmers.org</p>
+                <p><button id="PDFbutton" style="margin: 1px;text-decoration: underline;background-color: Lavender;line-height: 1.5;border-style: none" onclick="window.print()" onmouseenter="funcPDFbuttonMouseEnter()" onmouseleave="funcPDFbuttonMouseLeave()">Click here to save results (Print to PDF)</button></p>
             `;
 
 
