@@ -17,7 +17,6 @@
         }
 
         footer {
-
             text-align: center;
         }
 
@@ -39,6 +38,29 @@
         input {
             width: 13px;
         }
+
+
+        #horBarChart {
+            height: 50px;
+            width: 200px;
+            display: grid;
+            margin: auto;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @keyframes fill {
+
+            from {
+                width: 0%;
+            }
+
+        }
+
+        .chartText {
+            font-size: 85%;
+            text-align: left;
+        }
+
 
 
         @media only screen {
@@ -95,12 +117,37 @@
                 justify-content: center;
             }
 
+            #results {
+                display: block;
+                margin: 50px auto;
+            }
+
+            #resultsContent {
+                margin: 10%;
+            }
+
+            #chartCorrect {
+                background-color: lightgreen;
+                height: 100%;
+                width: 50%;
+                animation-name: fill;
+                animation-duration: 5s;
+            }
+
+            #chartIncorrect {
+                background-color: red;
+                height: 100%;
+                width: 50%;
+                animation-name: fill;
+                animation-duration: 5s;
+            }
+
+
             #dwlogo {
             }
 
             #bsflogo {
             }
-
         }
 
         @media only print {
@@ -127,25 +174,28 @@
             }
 
             #divAnswerColumn2 {
-
                 grid-template-columns: auto auto;
             }
 
-            #waterQuiz {
-
+            #waterQuizImage {
+                width: 80%;
+                margin: auto;
+                display: block;
+                justify-content: center;
             }
 
-            
-            #waterQuizImage {
-                width: 100%;
-
-
-
+            h1,
+            h2 {
+                font-size: 120%;
             }
 
             #level1Div {
                 white-space: nowrap;
 
+            }
+
+            #submit {
+                visibility: hidden;
             }
 
             html {
@@ -156,14 +206,49 @@
                 visibility: hidden;
             }
 
+
             #resultsContent {
-                height: 120px;
+                height: 67px;
+                margin: 5px;
+                margin-bottom: 12px;
+                width: 205px;
             }
 
             #results {
-                height: 122px;
+                justify-content: center;
+                margin: auto auto 40px auto;
+                display: flex;
             }
 
+            #horBarChart {
+                height: 25px;
+                margin: 5px auto auto auto;
+            }
+
+            #chartCorrect {
+                visibility: hidden;
+            }
+
+            #chartIncorrect {
+                visibility: hidden;
+            }
+
+            .chartText {
+                font-size: 100%;
+                text-align: left;
+            }
+
+            #score {
+                font-size: 150%;
+                margin: 10px auto auto auto;
+            }
+
+
+
+            .logos {
+                width: 30px;
+                margin: auto 5px auto 5px;
+            }
 
         }
 
@@ -455,14 +540,17 @@
 
         </div>
         <div style="display: block;margin: 10px">
-            <button type="submit">Submit</button>
+            <button id="submit" type="submit">Submit</button>
         </div>
     </div>
 
 
 <!-- div for results section -->
-<div id="results" style="display: block;width: 300px;text-align: center;border: 1px;border-style: solid;margin: 50px auto;visibility:hidden">
-    <div id="resultsContent" style="display: block;margin: 10%"></div>
+<div id="results" style="width: 300px;text-align: center;border: 1px;border-style: solid;visibility:hidden">
+    <div id="resultsContent" style="display: block">
+      
+    </div>
+
 </div>
 
 </form>
@@ -472,7 +560,7 @@
     <small>
     <p><span><img id="dwlogo" class="logos" src="dwlogo.png"></span><span><img id="bsflogo" class="logos" src="bsflogo.jpg"></span></p>
 
-    <p>Quiz developed by: USGS</p>
+    <p id="usgs">Quiz developed by: USGS</p>
     </small>
 </footer>
 
@@ -481,39 +569,39 @@
 
     //create array and populate with correct answers
     const correctAnswers = [
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans',
-        'corans'
+        'b',
+        'j',
+        'k',
+        'i',
+        'g',
+        'o',
+        'n',
+        'l',
+        'd',
+        'f',
+        'a',
+        'c',
+        'e',
+        'm',
+        'h',
+        '11',
+        '13',
+        '3',
+        '9',
+        '16',
+        '10',
+        '1',
+        '7',
+        '5',
+        '18',
+        '12',
+        '17',
+        '15',
+        '6',
+        '4',
+        '8',
+        '14',
+        '2',
     ];
 
     //declare functions for the print to pdf button background color change on hover feature
@@ -538,6 +626,8 @@
             const arrayResultElements = document.getElementsByClassName("adjacentResult");
             const arrayEmptyElements = document.getElementsByClassName("empty");
             const resultsElement = document.getElementById("results");
+            const arrayResultsContent = document.getElementById("resultsContent");
+
 
         //clear those two arrays, and hide result elements
             for (i = 0; i < arrayResultElements.length; i++) {
@@ -581,13 +671,39 @@
             }
         }
 
+
         //if the "numBlank" counter equals 0, show results
         if (numBlank == 0) {
 
+            //calculate percent correct
+                let percentCorrect = parseInt(((numCorrect / (numCorrect + numIncorrect)) * 100), 10);
+                let percentIncorrect = (100 - percentCorrect);
+
+            //get "results" element and set innerHTML to show numCorrect and numIncorrect
+              arrayResultsContent.innerHTML = `
+                <div id="horBarChart">
+                    <div id="chartCorrect"></div>
+                    <div id="chartIncorrect"></div>
+                    <div class="chartText" style="color:black;display: inline">Correct: 
+                       <span class="chartText" style="color:green;display: inline">${numCorrect}</span>
+                    </div>
+                    <div class="chartText" style="color:black;display: inline">Incorrect: 
+                     <span class="chartText" style="color:red;display: inline">${numIncorrect}</span>
+                    </div>
+                </div>
+                <p id="score">Score: ${percentCorrect}%</p>
+                <p><button id="PDFbutton" style="margin: 1px;text-decoration: underline;background-color: Lavender;line-height: 1.5;border-style: none" onclick="window.print()" onmouseenter="funcPDFbuttonMouseEnter()" onmouseleave="funcPDFbuttonMouseLeave()">Save results (Print to PDF)</button></p>
+            `;
 
 
-    //get "results" element and set innerHTML to show numCorrect and numIncorrect
-    resultsElement.innerHTML = `<p style="margin: 10px;font-size: 200%">Results: </p><div style="margin: 10px auto 10px auto;color:black;display: inline">Correct: </div><div style="color:green;display: inline">${numCorrect}</div><p style="margin: 10px auto 10px auto"><div style="color:black;display: inline">Incorrect: </div><div style="color:red;display: inline">${numIncorrect}</div></p><p><button id="PDFbutton" style="margin: 1px;text-decoration: underline;background-color: Lavender;line-height: 1.5;border-style: none" onclick="window.print()" onmouseenter="funcPDFbuttonMouseEnter()" onmouseleave="funcPDFbuttonMouseLeave()">Print (save) page to PDF</button></p>`;
+            //set chart element widths to correct and incorrect percentages
+            //get chart elements
+                const chartCorrectElement = document.getElementById("chartCorrect");
+                const chartIncorrectElement = document.getElementById("chartIncorrect");
+
+                chartCorrectElement.style.width = `${percentCorrect}%`;
+
+                chartIncorrectElement.style.width = `${percentIncorrect}%`;
 
 
             //and also, unhide the answer-ajacent results
@@ -601,10 +717,10 @@
         //for anything else, say something about required answers
         } else {
             //make the "results" text red
-            document.getElementById("resultsContent").style.color = 'red';
+            arrayResultsContent.style.color = 'red';
 
             //set "results" text
-            document.getElementById("resultsContent").innerHTML = `Please provide answers to all questions. <p>${numBlank} questions remaining.</p>`;
+            arrayResultsContent.innerHTML = `Please provide answers to all questions. <p>${numBlank} questions remaining.</p>`;
         }
 
         //unhide the results container
